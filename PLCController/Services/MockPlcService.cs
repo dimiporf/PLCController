@@ -9,7 +9,7 @@ namespace PLCController.Services
 {
     public class MockPlcService : IPlcService
     {
-        private Dictionary<string, bool> ioState = new()
+        private Dictionary<string, bool> _ioState = new()
     {
         { "SensorEntry", false },
         { "SensorOverload", false },
@@ -20,15 +20,15 @@ namespace PLCController.Services
 
         public Dictionary<string, bool> ReadInputsAndOutputs()
         {
-            return ioState;
+            return new Dictionary<string, bool>(_ioState);
         }
 
         public bool WriteOutput(string name, bool state)
         {
-            if (!ioState.ContainsKey(name))
+            if (!_ioState.ContainsKey(name))
                 return false;
 
-            ioState[name] = state;
+            _ioState[name] = state;
             return true;
         }
     }

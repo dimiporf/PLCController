@@ -1,39 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PLCController.Models;
 using PLCController.Services.IServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace PLCController.Controllers
+[ApiController]
+[Route("api/[controller]")]
+public class PlcController : ControllerBase
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class PlcController : ControllerBase
+    private readonly IPlcService _plc;
+    private readonly ILogService _log;
+
+    public PlcController(IPlcService plc, ILogService log)
     {
-        private readonly IPlcService _plc;
-
-        public PlcController(IPlcService plc)
-        {
-            _plc = plc;
-        }
-
-        [HttpGet("status")]
-        public IActionResult GetStatus()
-        {
-            var status = _plc.ReadInputsAndOutputs();
-            return Ok(status);
-        }
-
-        [HttpPost("command")]
-        public IActionResult SendCommand([FromBody] PlcCommandRequest request)
-        {
-            var success = _plc.WriteOutput(request.MotorOn, request.State);
-            return success ? Ok("OK") : StatusCode(500, "Failed to write to PLC");
-        }
+        _plc = plc;
+        _log = log;
     }
 
+    [HttpGet("status")]
+    public IActionResult GetStatus() => Ok(_plc.ReadInputsAndOutputs());
+
+    [HttpPost("command")]
+    public IActionResult SendCommand([FromBody] PlcCommandRequest request)
+    {
+        var success = _plc.WriteOutput(request.OutputName, request.State);
+
+        // ✍️ Καταγραφή στο log
+        string entry = $"[{DateTime.Now:HH:mm:ss}] UI Command → Output: '{request.OutputName}', State: {request.State}";
+        _log.Log(entry);
+
+        return success ? Ok("OK") : StatusCode(500, "Failed");
+    }
 }

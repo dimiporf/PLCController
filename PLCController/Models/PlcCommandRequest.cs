@@ -8,8 +8,8 @@ namespace PLCController.Models
 {
     public class PlcCommandRequest
     {
-        public string MotorOn { get; set; } // π.χ. "MotorOn"
-        public bool State { get; set; }        // true = ON, false = OFF
+        public string OutputName { get; set; } 
+        public bool State { get; set; }        
     }
 
 }
