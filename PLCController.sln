@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35828.75 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PLCController", "PLCController\PLCController.csproj", "{D398DAA6-8049-4092-9D87-E0C17AA4FE18}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PLCController.UI", "PLCController.UI\PLCController.UI.csproj", "{C96ED6C6-CE76-465E-B482-C97DB380D60B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D398DAA6-8049-4092-9D87-E0C17AA4FE18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D398DAA6-8049-4092-9D87-E0C17AA4FE18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D398DAA6-8049-4092-9D87-E0C17AA4FE18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C96ED6C6-CE76-465E-B482-C97DB380D60B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C96ED6C6-CE76-465E-B482-C97DB380D60B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C96ED6C6-CE76-465E-B482-C97DB380D60B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C96ED6C6-CE76-465E-B482-C97DB380D60B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
